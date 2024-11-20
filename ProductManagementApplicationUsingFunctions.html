@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product management application using functions</title>
+    <style>
+        table {
+            width: 50%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        button {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+<h1 style="text-align: center;">Product Management</h1>
+<div style="text-align: center;">
+    <input type="text" id="newProduct" placeholder="Enter new product"/>
+    <button onclick="addNewProduct()">Add Product</button>
+</div>
+<table id="productTable">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Product Name</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Products will be dynamically populated here -->
+    </tbody>
+</table>
+<script>
+    const arrProduct = ['Nhan', 'Vai', 'Oi', 'Tao', 'Nho', 'Mit', 'Chuoi'];
+
+    function displayProduct() {
+        const tableBody = document.getElementById('productTable').querySelector('tbody');
+        tableBody.innerHTML = ""; // Clear existing rows
+        arrProduct.forEach((product, index) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${product}</td>
+                    <td>
+                        <button onclick="editProduct('${product}')">Edit</button>
+                        <button onclick="deleteProduct('${product}')">Delete</button>
+                    </td>
+                `;
+            tableBody.appendChild(row);
+        });
+    }
+
+    function addNewProduct(product) {
+        const newProduct = document.getElementById('newProduct').value.trim();
+        if (newProduct) {
+            arrProduct.push(newProduct);
+            displayProduct();
+            document.getElementById('newProduct').value = ""; // Clear input
+        } else {
+            alert("Please enter a product name.");
+        }
+    }
+
+    function findProduct(product) {
+        return arrProduct.indexOf(product);
+    }
+
+    function editProduct(product) {
+        let index = findProduct(product)
+        if (index === -1) {
+            alert("Product not found!");
+        } else {
+            const newName = prompt("Enter new name for the product:", product);
+            if (newName) {
+                arrProduct[index] = newName.trim();
+                displayProduct();
+            }
+        }
+    }
+
+    function deleteProduct(product) {
+        let index = findProduct(product)
+        if (index !== -1) {
+            if (confirm(`Are you sure you want to delete "${product}"?`)) {
+                arrProduct.splice(index, 1);
+                displayProduct();
+            }
+        } else {
+            alert("Product not found!");
+        }
+    }
+
+    displayProduct();
+</script>
+</body>
+</html>
