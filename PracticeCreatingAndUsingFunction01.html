@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Practice creating and using function 01</title>
+</head>
+<body>
+<script>
+/*
+* Bài 1: Tạo hàm alertMessage() hiển thị hộp thoại chứa chuỗi  "Xin chao".
+* Gọi hàm từ trong phần <body> của trang web.
+* */
+function alertMessage(message){
+  console.log(message);
+}
+alertMessage("hello");
+
+/*
+Bài 2: Tạo hàm nhận vào một đối số dạng số, tăng giá trị đối số đó lên 1 và trả lại giá trị cho lời gọi hàm.
+Gọi hàm từ trong phần <body> của trang web và hiển thị kết quả lên màn hình.
+ */
+function upArgument(number){
+  return number + 1;
+}
+console.log(upArgument(5));
+/*
+Bài 3: Tạo hàm nhận vào hai tham số. Nếu giá trị của tham số thứ nhất lớn hơn tham số thứ hai,
+hiển thị hộp thoại thông báo cho người dùng. Nếu giá trị của tham số thứ nhất nhỏ hơn hoặc bằng tham số thứ hai,
+trả về tổng của hai tham số.
+ */
+function checkBiggest(number1, number2){
+  if (number1 >number2){
+    return "Number 1 > number 2";
+  }else {
+    return number1 + number2;
+  }
+}
+console.log(checkBiggest(5,7));
+// p4
+function addNumbers() {
+  let firstNum = 4;
+  let secondNum = 8;
+  let result = firstNum + secondNum;
+  return result;
+}
+let result = 0;
+console.log("Giá trị của result trước khi gọi hàm: " + result);
+result = addNumbers();
+console.log("Giá trị của result sau khi gọi hàm: " + result);
+// p5
+const arrayStar = ['Polaris', 'Aldebaran', 'Deneb', 'Vega', 'Altair', 'Dubhe', 'Regulus'];
+const arrayConstellation = ['Ursa Minor', 'Tarurus', 'Cygnus', 'Lyra', 'Aquila', 'Ursa Major', 'Leo'];
+function checkStarConstellation(name) {
+  let index = 0;
+  let check = false;
+  for (let i = 0; i < arrayStar.length; i++) {
+    if (arrayStar[i] === name){
+      index = i;
+      check = true;
+      break;
+    }
+  }
+  if (check) {
+    console.log("Find: " + arrayConstellation[index]);
+  }else {
+    console.log("Not fount: " + name);
+  }
+}
+checkStarConstellation("asds");
+</script>
+</body>
+</html>
