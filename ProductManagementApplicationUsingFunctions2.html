@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product management application using functions 2</title>
+</head>
+<body>
+<script>
+    function isPalindrome(s) {
+        s = s.replace(/\s+/g, '').toLowerCase();
+
+        if (s.length <= 1) {
+            return true;
+        }
+
+        if (s[0] !== s[s.length - 1]) {
+            return false;
+        }
+
+        return isPalindrome(s.slice(1, s.length - 1));
+    }
+
+    const input = prompt("Nhập vào chuỗi cần kiểm tra:");
+    if (isPalindrome(input)) {
+        alert(`"${input}" là chuỗi đối xứng.`);
+    } else {
+        alert(`"${input}" không phải là chuỗi đối xứng.`);
+    }
+</script>
+</body>
+</html>
